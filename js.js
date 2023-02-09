@@ -85,9 +85,17 @@ var operators = {
  var key = '+';
 
  function secNum() {
-    num1 = parseInt(botText.textContent);
+    decimal = false;
+    num1 = parseFloat(botText.textContent);
     topText.textContent = botText.textContent + " " + key;
     opPress = true;
+ }
+
+ function clear() {
+    topText.textContent = "";
+    botText.textContent = "0";
+    num1 = 0;
+    num2 = 0;
  }
 
 const plus = document.querySelector("#plus");
@@ -115,11 +123,10 @@ division.addEventListener("click", () => {
 });
 
 function operate(num1, num2, op) {
-    num2 = parseInt(botText.textContent);
+    num2 = parseFloat(botText.textContent);
     if (num2 === 0 && key === "/") {
         alert("Cannot divide by 0");
-        topText.textContent = "";
-        botText.textContent = "0";
+        clear();
     } else {
         topText.textContent += " " + botText.textContent
         ans = op[key](num1, num2);
@@ -132,3 +139,21 @@ const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
     operate(num1, num2, operators);
 });
+
+const ac = document.querySelector("#ac");
+ac.addEventListener("click", () => {
+    clear();
+})
+
+const ce = document.querySelector("#ce");
+ce.addEventListener("click", () => {
+    botText.textContent = "0";
+})
+
+const period = document.querySelector("#period");
+period.addEventListener("click", () => {
+    if (decimal === false) {
+        botText.textContent += ".";
+        decimal = true;
+    }
+})
