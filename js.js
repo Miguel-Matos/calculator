@@ -74,15 +74,14 @@ let num2 = 0;
 let ans = 0;
 let opPress = false;
 let decimal = false;
+let key = '+';
 
-var operators = {
+let operators = {
     '+': function(a, b){ return a+b},
     '-': function(a, b){ return a-b},
     '×': function(a, b){ return a*b},
     '/': function(a, b){ return a/b}
  }
-
- var key = '+';
 
  function secNum() {
     decimal = false;
@@ -127,13 +126,17 @@ function operate(num1, num2, op) {
     if (num2 === 0 && key === "/") {
         alert("Cannot divide by 0");
         clear();
+    } else if (key === "%") {
+        num2 *= .01;
+        ans = num1 * num2;
+        botText.textContent = ans.toString();
     } else {
         topText.textContent += " " + botText.textContent
         ans = op[key](num1, num2);
         botText.textContent = ans.toString();
     }
     
-}
+};
 
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
@@ -143,17 +146,28 @@ equal.addEventListener("click", () => {
 const ac = document.querySelector("#ac");
 ac.addEventListener("click", () => {
     clear();
-})
+});
 
 const ce = document.querySelector("#ce");
 ce.addEventListener("click", () => {
     botText.textContent = "0";
-})
+});
 
 const period = document.querySelector("#period");
 period.addEventListener("click", () => {
     if (decimal === false) {
-        botText.textContent += ".";
+        if (botText.textContent === "0" || botText.textContent === "") {
+            botText.textContent = "0.";
+        } else {
+            botText.textContent += ".";
+        }
         decimal = true;
     }
-})
+});
+
+const percent = document.querySelector("#percent");
+percent.addEventListener("click", () =>
+{
+    key = "%";
+    operate(num1, num2, operators);
+});
