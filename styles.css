@@ -32,14 +32,16 @@
     height: 100px;
     display: flex;
     justify-content: right;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 #bottom p {
     margin-right: 20px;
     font-family: monospace;
-    font-size: 4em;
+    font-size: 3.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 body {

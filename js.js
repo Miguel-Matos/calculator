@@ -8,67 +8,6 @@ const botText = document.createElement("p");
 botText.textContent = "0";
 botNum.appendChild(botText);
 
-function c(str) { //prevents calc from overflowing, also removes 0 from the beginning
-    if (botText.textContent === "0" || opPress == true) {
-        botText.textContent = "";
-        opPress = false;
-    }
-
-    if (botText.textContent.length < 6) {
-        botText.textContent += str;
-    }
-}
-
-const zero = document.querySelector("#zero");
-zero.addEventListener("click", () => {
-    c("0");
-});
-
-const one = document.querySelector("#one");
-one.addEventListener("click", () => {
-    c("1");
-});
-
-const two = document.querySelector("#two");
-two.addEventListener("click", () => {
-    c("2");
-});
-
-const three = document.querySelector("#three");
-three.addEventListener("click", () => {
-    c("3");
-});
-
-const four = document.querySelector("#four");
-four.addEventListener("click", () => {
-    c("4");
-});
-
-const five = document.querySelector("#five");
-five.addEventListener("click", () => {
-    c("5");
-});
-
-const six = document.querySelector("#six");
-six.addEventListener("click", () => {
-    c("6");
-});
-
-const seven = document.querySelector("#seven");
-seven.addEventListener("click", () => {
-    c("7");
-});
-
-const eight = document.querySelector("#eight");
-eight.addEventListener("click", () => {
-    c("8");
-});
-
-const nine = document.querySelector("#nine");
-nine.addEventListener("click", () => {
-    c("9");
-});
-
 let num1 = 0;
 let num2 = 0;
 let ans = 0;
@@ -76,18 +15,72 @@ let opPress = false;
 let decimal = false;
 let key = '+';
 
-let operators = {
+function c(str) { //prevents calc from overflowing, also removes 0 from the beginning
+    if (botText.textContent === "0" ) {
+        botText.textContent = "";
+        
+    }
+    if (botText.textContent.length < 9) {
+        botText.textContent += str;
+    }
+}
+
+
+//responds to the numbers
+const zero = document.querySelector("#zero");
+zero.addEventListener("click", () => {
+    c("0");
+});
+const one = document.querySelector("#one");
+one.addEventListener("click", () => {
+    c("1");
+});
+const two = document.querySelector("#two");
+two.addEventListener("click", () => {
+    c("2");
+});
+const three = document.querySelector("#three");
+three.addEventListener("click", () => {
+    c("3");
+});
+const four = document.querySelector("#four");
+four.addEventListener("click", () => {
+    c("4");
+});
+const five = document.querySelector("#five");
+five.addEventListener("click", () => {
+    c("5");
+});
+const six = document.querySelector("#six");
+six.addEventListener("click", () => {
+    c("6");
+});
+const seven = document.querySelector("#seven");
+seven.addEventListener("click", () => {
+    c("7");
+});
+const eight = document.querySelector("#eight");
+eight.addEventListener("click", () => {
+    c("8");
+});
+const nine = document.querySelector("#nine");
+nine.addEventListener("click", () => {
+    c("9");
+});
+
+let operators = { //idea from https://stackoverflow.com/questions/14653647/how-to-store-operator-in-variable-using-javascript
     '+': function(a, b){ return a+b},
     '-': function(a, b){ return a-b},
     '×': function(a, b){ return a*b},
     '/': function(a, b){ return a/b}
  }
 
- function secNum() {
+ function secNum() { // Takes the first number input, sets it as the value of num1 and displays it on the top of the calculator
     decimal = false;
     num1 = parseFloat(botText.textContent);
     topText.textContent = botText.textContent + " " + key;
     opPress = true;
+    botText.textContent = "0";
  }
 
  function clear() {
@@ -95,30 +88,72 @@ let operators = {
     botText.textContent = "0";
     num1 = 0;
     num2 = 0;
+    opPress = false;
+    decimal = false;
+ }
+
+ function cont(num1, num2, op) { //calculates the two numbers and sets it to the first number. Done in the event that the user pushes an operator instead of equal after the second num
+    num2 = parseFloat(botText.textContent);
+    num1 = Math.round((op[key](num1, num2)) * 100) / 100;
+    console.log(num1);
+    botText.textContent = "0";
+    decimal = false;
+    return num1;
+ }
+
+ function calcSelect() { //chooses which function to select based on if an operator has been chosen before or if it is the first time.
+    if (opPress === true) {
+        num1 = cont(num1, num2, operators);
+        topText.textContent = num1.toString() + " " + key;
+        console.log(num1);
+    } else if (opPress === false) {
+        secNum();
+    }
  }
 
 const plus = document.querySelector("#plus");
 plus.addEventListener("click", () => {
-    key = '+';
-    secNum();
+    if (opPress == false) {
+        key = '+';
+        calcSelect();
+    } else {
+        calcSelect();
+        key = '+';
+    }
+    
 });
 
 const minus = document.querySelector("#minus");
 minus.addEventListener("click", () => {
-    key = '-';
-    secNum();
+    if (opPress == false) {
+        key = '-';
+        calcSelect();
+    } else {
+        calcSelect();
+        key = '-';
+    }
 });
 
 const multiply = document.querySelector("#multiply");
 multiply.addEventListener("click", () => {
-    key = '×';
-    secNum();
+    if (opPress == false) {
+        key = '×';
+        calcSelect();
+    } else {
+        calcSelect();
+        key = '×';
+    }
 });
 
 const division = document.querySelector("#division");
 division.addEventListener("click", () => {
-    key = '/';
-    secNum();
+    if (opPress == false) {
+        key = '/';
+        calcSelect();
+    } else {
+        calcSelect();
+        key = '/';
+    }
 });
 
 function operate(num1, num2, op) {
@@ -132,8 +167,10 @@ function operate(num1, num2, op) {
         botText.textContent = ans.toString();
     } else {
         topText.textContent += " " + botText.textContent
-        ans = op[key](num1, num2);
+        ans = Math.round((op[key](num1, num2)) * 100) / 100;
         botText.textContent = ans.toString();
+        num1 = ans;
+        opPress = false;
     }
     
 };
