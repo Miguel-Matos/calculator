@@ -62,6 +62,7 @@ button {
     width: 100px;
     height: 90px;
     font-size: larger;
+    border-radius: 0;
 }
 
 button:hover {

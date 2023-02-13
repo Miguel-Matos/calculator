@@ -13,9 +13,14 @@ let num2 = 0;
 let ans = 0;
 let opPress = false;
 let decimal = false;
+let reset = false;
 let key = '+';
 
 function c(str) { //prevents calc from overflowing, also removes 0 from the beginning
+    if (reset === true) {
+        clear();
+    }
+    
     if (botText.textContent === "0" ) {
         botText.textContent = "";
         
@@ -90,6 +95,7 @@ let operators = { //idea from https://stackoverflow.com/questions/14653647/how-t
     num2 = 0;
     opPress = false;
     decimal = false;
+    reset = false;
  }
 
  function cont(num1, num2, op) { //calculates the two numbers and sets it to the first number. Done in the event that the user pushes an operator instead of equal after the second num
@@ -178,6 +184,7 @@ function operate(num1, num2, op) {
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
     operate(num1, num2, operators);
+    reset = true;
 });
 
 const ac = document.querySelector("#ac");
