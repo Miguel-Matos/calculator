@@ -57,6 +57,7 @@ body {
 #buttons {
     display: flex;
     flex-wrap: wrap;
+    background-color: rgb(204, 204, 204);
 }
 
 button {
