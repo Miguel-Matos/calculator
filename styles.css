@@ -56,14 +56,14 @@ body {
 #buttons {
     display: flex;
     flex-wrap: wrap;
+    background-color: rgb(204, 204, 204);
 }
 
 button {
     width: 100px;
     height: 90px;
     font-size: larger;
-    border-radius: 0;
-    -webkit-appearance: none;
+    border-radius: 0%;
 }
 
 button:hover {
