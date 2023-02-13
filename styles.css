@@ -64,7 +64,7 @@ button {
     width: 100px;
     height: 90px;
     font-size: larger;
-    -webkit-border-radius:0px;
+    -webkit-appearance: none !important;
 }
 
 button:hover {
