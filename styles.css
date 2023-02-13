@@ -63,6 +63,7 @@ button {
     height: 90px;
     font-size: larger;
     border-radius: 0;
+    -webkit-appearance: none;
 }
 
 button:hover {
