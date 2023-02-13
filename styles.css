@@ -64,7 +64,7 @@ button {
     width: 100px;
     height: 90px;
     font-size: larger;
-    -webkit-appearance: none !important;
+    font-family: sans-serif;
 }
 
 button:hover {
