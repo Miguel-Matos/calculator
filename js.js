@@ -119,6 +119,7 @@ let operators = { //idea from https://stackoverflow.com/questions/14653647/how-t
 
 const plus = document.querySelector("#plus");
 plus.addEventListener("click", () => {
+    reset = false;
     if (opPress == false) {
         key = '+';
         calcSelect();
@@ -131,6 +132,7 @@ plus.addEventListener("click", () => {
 
 const minus = document.querySelector("#minus");
 minus.addEventListener("click", () => {
+    reset = false;
     if (opPress == false) {
         key = '-';
         calcSelect();
@@ -142,6 +144,7 @@ minus.addEventListener("click", () => {
 
 const multiply = document.querySelector("#multiply");
 multiply.addEventListener("click", () => {
+    reset = false;
     if (opPress == false) {
         key = '×';
         calcSelect();
@@ -153,6 +156,7 @@ multiply.addEventListener("click", () => {
 
 const division = document.querySelector("#division");
 division.addEventListener("click", () => {
+    reset = false;
     if (opPress == false) {
         key = '/';
         calcSelect();
