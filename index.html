@@ -4,43 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="normalize.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <!-- <link href="/dist/output.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link href="/dist/output.css" rel="stylesheet">
     <script src="js.js" defer></script>
     <title>Calculator</title>
   </head>
   <body>
 
-    <div id="main">
-      <div id="screen">
-        <div id="top"></div>
-        <div id="bottom"><p></p></div>
+    <div class="w-full sm:w-96" id="main">
+      <div class="dark:bg-zinc-700 dark:text-zinc-300 py-5" id="screen">
+        <div class="h-10 text-right pr-5 text-2xl" id="top"></div>
+        <div class="h-10 text-right pr-5 text-4xl" id="bottom"><p></p></div>
       </div>
-      <div id="buttons">
-        <button id="ac">AC</button>
-        <button id="ce">CE</button>
-        <button id="percent">%</button>
-        <button id="division">÷</button>
-
-        <button id="seven">7</button>
-        <button id="eight">8</button>
-        <button id="nine">9</button>
-        <button id="multiply">×</button>
-
-        <button id="four">4</button>
-        <button id="five">5</button>
-        <button id="six">6</button>
-        <button id="minus">-</button>
-
-        <button id="one">1</button>
-        <button id="two">2</button>
-        <button id="three">3</button>
-        <button id="plus">+</button>
-
-        <button id="zero">0</button>
-        <button id="period">.</button>
-        <button id="equal">=</button>
+      <div class="grid grid-cols-4 gap-5 p-5 bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-300" id="buttons">
+        <button class="btn-primary" id="ac">AC</button>
+        <button class="btn-primary" id="ce">CE</button>
+        <button class="btn-primary" id="percent">%</button>
+        <button class="btn-primary" id="division">÷</button>
+        <button class="btn-primary" id="seven">7</button>
+        <button class="btn-primary" id="eight">8</button>
+        <button class="btn-primary" id="nine">9</button>
+        <button class="btn-primary" id="multiply">×</button>
+        <button class="btn-primary" id="four">4</button>
+        <button class="btn-primary" id="five">5</button>
+        <button class="btn-primary" id="six">6</button>
+        <button class="btn-primary" id="minus">-</button>
+        <button class="btn-primary" id="one">1</button>
+        <button class="btn-primary" id="two">2</button>
+        <button class="btn-primary" id="three">3</button>
+        <button class="btn-primary" id="plus">+</button>
+        <button class="btn-primary" id="zero">0</button>
+        <button class="btn-primary" id="period">.</button>
+        <button class="btn-primary col-span-2" id="equal">=</button>
       </div>
     </div>
   </body>

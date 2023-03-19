@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-#main {
+@layer components {
+  .btn-primary {
+    @apply bg-zinc-200 rounded-xl py-5 hover:bg-zinc-100 active:bg-zinc-300 dark:bg-zinc-500 hover:dark:bg-zinc-400 active:dark:bg-zinc-700;
+  }
+}
+
+/* #main {
   width: 400px;
   height: 600px;
   background-color: black;
@@ -55,7 +61,7 @@ body {
   height: 100vh;
   /* display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center; 
 }
 
 #buttons {
@@ -78,4 +84,4 @@ button:hover {
 
 #equal {
   width: 200px;
-}
+} */
